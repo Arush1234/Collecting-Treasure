@@ -3,7 +3,6 @@ var pathImg,boyImg,cashImg,diamondsImg,jwelleryImg,swordImg;
 var treasureCollection = 0;
 var cashG,diamondsG,jwelleryG,swordGroup;
 
-//Game States
 var PLAY=1;
 var END=0;
 var gameState=1;
@@ -24,9 +23,7 @@ function setup(){
 path=createSprite(200,200);
 path.addImage(pathImg);
 path.velocityY = 4;
-
-
-//creating boy running
+  
 boy = createSprite(70,580,20,20);
 boy.addAnimation("SahilRunning",boyImg);
 boy.scale=0.08;
