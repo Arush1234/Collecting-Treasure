@@ -1,7 +1,7 @@
-var path,boy,cash,diamonds,jewelry,sword;
-var pathImg,boyImg,cashImg,diamondsImg,jewelryImg,swordImg;
+var path,boy,cash,diamonds,jwellery,sword;
+var pathImg,boyImg,cashImg,diamondsImg,jwelleryImg,swordImg;
 var treasureCollection = 0;
-var cashG,diamondsG,jewelryG,swordGroup;
+var cashG,diamondsG,jwelleryG,swordGroup;
 
 //Game States
 var PLAY=1;
@@ -13,10 +13,8 @@ function preload(){
   boyImg = loadAnimation("Runner-1.png","Runner-2.png");
   cashImg = loadImage("cash.png");
   diamondsImg = loadImage("diamonds.png");
-  jewelryImg = loadImage("jwell.png");
+  jwelleryImg = loadImage("jwell.png");
   swordImg = loadImage("sword.png");
-  
-  
 }
 
 function setup(){
@@ -36,7 +34,7 @@ boy.scale=0.08;
   
 cashG=new Group();
 diamondsG=new Group();
-jewelryG=new Group();
+jwelleryG=new Group();
 swordGroup=new Group();
 
 }
@@ -57,7 +55,7 @@ function draw() {
   
     createCash();
     createDiamonds();
-    createjewelry();
+    createJwellery();
     createSword();
 
     if (cashG.isTouching(boy)) {
@@ -68,44 +66,24 @@ function draw() {
       diamondsG.destroyEach();
       treasureCollection=treasureCollection+100;
       
-    }else if(jewelryG.isTouching(boy)) {
-      jewelryG.destroyEach();
-
-      // treasureCollection=+ 150;
-      // treasureCollection= 150;
-      // treasureCollection= treasureCollection - 150;
-      // treasureCollection= treasureCollection + 150;
+    }else if(jwelleryG.isTouching(boy)) {
+      jwelleryG.destroyEach();
+      treasureCollection= treasureCollection + 150;
       
     }else{
       if(swordGroup.isTouching(boy)) {
         gameState=END;
-        
        
-        // cashG.destroyEach;
-        // diamondsG.destroyEach;
-        // jewelryG.destroyEach;
-        // swordGroup.destroyEach;
-
-        // cashG.destroy();
-        // diamondsG.destroy();
-        // jewelryG.destroy();
-        // swordGroup.destroy();
         
-        // cashG.destroyEach();
-        // diamondsG.destroyEach();
-        // jewelryG.destroyEach();
-        // swordGroup.destroyEach();
-        
-        // cashGdestroyEach();
-        // diamondsGdestroyEach();
-        // jewelryGdestroyEach();
-        // swordGroupdestroyEach();
+        cashG.destroyEach();
+        diamondsG.destroyEach();
+        jwelleryG.destroyEach();
+        swordGroup.destroyEach();
         
         cashG.setVelocityYEach(0);
         diamondsG.setVelocityYEach(0);
-        jewelryG.setVelocityYEach(0);
+        jwelleryG.setVelocityYEach(0);
         swordGroup.setVelocityYEach(0);
-        
      
     }
   }
@@ -113,7 +91,7 @@ function draw() {
   drawSprites();
   textSize(20);
   fill(255);
-  text("Treasure: "+ treasureCollection,10,30);
+  text("Treasure: "+ treasureCollection,150,30);
   }
 
 }
@@ -140,14 +118,14 @@ function createDiamonds() {
 }
 }
 
-function createjewelry() {
+function createJwellery() {
   if (World.frameCount % 410 == 0) {
-  var jewelry = createSprite(Math.round(random(50, 350),40, 10, 10));
-  jewelry.addImage(jewelryImg);
-  jewelry.scale=0.13;
-  jewelry.velocityY = 3;
-  jewelry.lifetime = 150;
-  jewelryG.add(jewelry);
+  var jwellery = createSprite(Math.round(random(50, 350),40, 10, 10));
+  jwellery.addImage(jwelleryImg);
+  jwellery.scale=0.13;
+  jwellery.velocityY = 3;
+  jwellery.lifetime = 150;
+  jwelleryG.add(jwellery);
   }
 }
 
